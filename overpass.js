@@ -1,28 +1,32 @@
 class overpass {
 
-    getData() {
+    getData(map) {
         const OvServer = "https://maps.mail.ru/osm/tools/overpass/api/interpreter"
         const ovpass = 'nwr["leisure"="park"]'//;nwr["name"="	宮の上公園"];nwr["name"="いおり公園"]'
 
-        let LL = { "NW": map.getBounds().getNorthWest(), "SE": map.getBounds().getSouthEast() };
-        let maparea = '[bbox:' + LL.SE.lat + ',' + LL.NW.lng + ',' + LL.NW.lat + ',' + LL.SE.lng + '];';
-        let query = OvServer + '?data=[out:json][timeout:30]' + maparea + '(' + ovpass + ';);out body;>;out skel qt;'
-        const headers = { 'Accept': 'application/json', 'Content-Type': 'application/x-www-form-urlencoded' };
-        console.log(query)
-        fetch(query, { "mode": 'cors', "headers": headers })
-            .then((response) => {
-                return response.json()
-            })
-            .then((osmxml) => {
-                let data = osmtogeojson(osmxml, { flatProperties: true })
-                let json = {};
-                data.features.forEach(element => {
-                    let ll = flat2single(element.geometry.coordinates, element.geometry.type)
-                    let NM = element.properties.name;
-                    json.push({ lat: ll[0], lng: ll[1], nme: NM, id: element.properties.id })
-                });
-                return json;
-            })
+        return new Promise((resolve, reject) => {
+            let LL = { "NW": map.getBounds().getNorthWest(), "SE": map.getBounds().getSouthEast() };
+            let maparea = '[bbox:' + LL.SE.lat + ',' + LL.NW.lng + ',' + LL.NW.lat + ',' + LL.SE.lng + '];';
+            let query = OvServer + '?data=[out:json][timeout:30]' + maparea + '(' + ovpass + ';);out body;>;out skel qt;'
+            const headers = { 'Accept': 'application/json', 'Content-Type': 'application/x-www-form-urlencoded' };
+            console.log(query)
+            fetch(query, { "mode": 'cors', "headers": headers })
+                .then((response) => {
+                    return response.json()
+                })
+                .then((osmxml) => {
+                    let data = osmtogeojson(osmxml, { flatProperties: true })
+                    let json = [];
+                    data.features.forEach(element => {
+                        let ll = flat2single(element.geometry.coordinates, element.geometry.type)
+                        let NM = element.properties.name;
+                        json.push({ lat: ll[1], lng: ll[0], name: NM, id: element.properties.id })
+                    });
+                    resolve(json);
+                })
+    
+        });
+
     }
 
 }
