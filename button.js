@@ -20,7 +20,7 @@ document.getElementById('submit-answer').addEventListener('click', function() {
     else {
         Swal.fire({
             title: "エラー！",
-            text: "エラーです",
+            text: "選択肢を選んでください！",
             icon: "warning"
         });
     }

@@ -21,8 +21,27 @@ class overpass {
                         let ll = flat2single(element.geometry.coordinates, element.geometry.type)
                         let NM = element.properties.name;
                         json.push({ lat: ll[1], lng: ll[0], name: NM, id: element.properties.id })
-                    });
-                    resolve(json);
+
+                        let NW = ll[0];
+                        let SE = ll[1];
+                        
+                        // アイコンの設定
+                        var icon = document.createElement('div');
+                        icon.innerHTML = "<img src='kumo.png' style='width: 192px'>";
+
+                        // ポップアップの設定
+                        let popup = new maplibregl.Popup({
+                            offset: 25, // ポップアップの位置
+                            closeButton: false, // 閉じるボタンの表示
+                            }).setText(NM);
+                            
+                            // マーカーの作成
+                            new maplibregl.Marker({ element: icon })
+                            .setLngLat([NW, SE])
+                            // .setPopup(popup)
+                            .addTo(map)
+                        });
+                        resolve(json);
                 })
     
         });
