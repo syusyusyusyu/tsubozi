@@ -4,7 +4,7 @@
 var LL = {};								// 緯度(latitude)と経度(longitude)
 // const OvServer = 'https://overpass.openstreetmap.jp/api/interpreter';	// or 'https://overpass-api.de/api/interpreter'
 const OvServer = "https://maps.mail.ru/osm/tools/overpass/api/interpreter"
-const ovpass = 'nwr["leisure"="park"]'
+const ovpass = 'nwr["leisure"="park"]'//;nwr["name"="	宮の上公園"];nwr["name"="いおり公園"]'
 
 window.onload = function () {
 
@@ -12,14 +12,14 @@ window.onload = function () {
 	var map = new maplibregl.Map({
 		container: 'map',
 		style: 'https://k-sakanoshita.github.io/community_mapmaker/tiles/osmfj.json', // スタイル
-		center: [135.49453, 34.70429], // 座標
+		center: [135.457188, 34.451391], // 座標
 		zoom: 15, // ズームレベル
 		pitch: 30 // 傾き
 	});
 
 	LL = { "NW": map.getBounds().getNorthWest(), "SE": map.getBounds().getSouthEast() };
-	let maparea = '(' + LL.SE.lat + ',' + LL.NW.lng + ',' + LL.NW.lat + ',' + LL.SE.lng + ');';
-	let query = OvServer + '?data=[out:json][timeout:30];(' + ovpass + maparea + ');out body;>;out skel qt;'
+	let maparea = '[bbox:' + LL.SE.lat + ',' + LL.NW.lng + ',' + LL.NW.lat + ',' + LL.SE.lng + '];';
+	let query = OvServer + '?data=[out:json][timeout:30]'+ maparea + '(' + ovpass + ';);out body;>;out skel qt;'
 	const headers = { 'Accept': 'application/json', 'Content-Type': 'application/x-www-form-urlencoded' };
 	console.log(query)
 	fetch(query, { "mode": 'cors', "headers": headers })
