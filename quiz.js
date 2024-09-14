@@ -7,4 +7,8 @@ class quiz{
         ans4.innerHTML = json[3].name;
         
     }
+
+    setKumo(json){
+        
+    }
 }

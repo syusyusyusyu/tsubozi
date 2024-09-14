@@ -14,6 +14,7 @@ window.onload = function () {
         pitch: 30 // 傾き
     });
     sv.getData(map).then((json) => { qz.setQuiz(json) })
+    sv.getData(map).then((json) => { qz.setKumo(json) })
 }
 
 

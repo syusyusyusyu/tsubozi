@@ -34,35 +34,7 @@
 			<button id="submit-answer">解答</button>
             <button id="next-question">次の問題</button>
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-            <script>
-                document.getElementById('submit-answer').addEventListener('click', function() {
-                    var selectedAnswer = document.querySelector('input[name="answer"]:checked');
-                    if (selectedAnswer) {
-                        var map = selectedAnswer.nextElementSibling.textContent;
-                        if(selectedAnswer.nextElementSibling.id === "ans1"){
-                            Swal.fire({
-                                title: "正解！",
-                                text: map + "です！",
-                                icon: "success"
-                            });
-                        }
-                        else {
-                        Swal.fire({
-                            title: "不正解！",
-                            text: map + "ではありません！",
-                            icon: "error"
-                        });
-                    }
-                    }
-                    else {
-                        Swal.fire({
-                            title: "エラー！",
-                            text: "エラーです",
-                            icon: "warning"
-                        });
-                    }
-                });
-            </script>
+            <script src="button.js"></script>
         </div>
     </div>
 </body>
