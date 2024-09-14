@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OverPass Lesson1</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.8.0/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.3.1/dist/maplibre-gl.css" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://unpkg.com/maplibre-gl@4.3.1/dist/maplibre-gl.js"></script>
+    <script src="./osmtogeojson.js"></script>
+</head>
+
+<body>
+    <div id="map"></div>
+    <div id="overlay">
+        <div class="title">モヤモヤマップ</div>
+		<div class="quiz-images">
+			<img src="quiz_woman_maru.png" alt="Quiz Woman Maru" class="quiz-image" />
+			<img src="quiz_woman_batsu.png" alt="Quiz Woman Batsu" class="quiz-image" />
+		</div>
+		
+        <div class="quiz">
+            <h2>問題: この地図はどこですか？</h2>
+            <ul>
+                <li><input type="radio" name="answer" value="1"> 大阪1</li>
+                <li><input type="radio" name="answer" value="2"> 大阪2</li>
+                <li><input type="radio" name="answer" value="3"> 大阪3</li>
+                <li><input type="radio" name="answer" value="4"> 大阪4</li>
+            </ul>
+			<button id="submit-answer">解答</button>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
