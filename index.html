@@ -10,6 +10,8 @@
     <script src="./overpass.js"></script>
     <script src="./quiz.js"></script>
     <script src="./main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="true.js"></script>
 </head>
 
 <body>
@@ -24,13 +26,43 @@
         <div class="quiz">
             <h2>問題: この地図はどこですか？</h2>
             <ul>
-                <li><input type="radio" name="answer" value="1"><span id="ans1">大阪1</span></li>
-                <li><input type="radio" name="answer" value="2"><span id="ans2">大阪2</span></li>
-                <li><input type="radio" name="answer" value="3"><span id="ans3">大阪3</span></li>
-                <li><input type="radio" name="answer" value="4"><span id="ans4">大阪4</span></li>
+                <li><input type="radio" name="answer" value="1"><span id="ans1"></span></li>
+                <li><input type="radio" name="answer" value="2"><span id="ans2"></span></li>
+                <li><input type="radio" name="answer" value="3"><span id="ans3"></span></li>
+                <li><input type="radio" name="answer" value="4"><span id="ans4"></span></li>
             </ul>
 			<button id="submit-answer">解答</button>
             <button id="next-question">次の問題</button>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+                document.getElementById('submit-answer').addEventListener('click', function() {
+                    var selectedAnswer = document.querySelector('input[name="answer"]:checked');
+                    if (selectedAnswer) {
+                        var map = selectedAnswer.nextElementSibling.textContent;
+                        if(selectedAnswer.nextElementSibling.id === "ans1"){
+                            Swal.fire({
+                                title: "正解！",
+                                text: map + "です！",
+                                icon: "success"
+                            });
+                        }
+                        else {
+                        Swal.fire({
+                            title: "不正解！",
+                            text: map + "ではありません！",
+                            icon: "error"
+                        });
+                    }
+                    }
+                    else {
+                        Swal.fire({
+                            title: "エラー！",
+                            text: "エラーです",
+                            icon: "warning"
+                        });
+                    }
+                });
+            </script>
         </div>
     </div>
 </body>
