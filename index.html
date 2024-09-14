@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="./styles.css" />
     <script src="https://unpkg.com/maplibre-gl@4.3.1/dist/maplibre-gl.js"></script>
     <script src="./osmtogeojson.js"></script>
+    <script src="./main.js"></script>
+    <script src="./quiz.js"></script>
 </head>
 
 <body>
@@ -21,12 +23,13 @@
         <div class="quiz">
             <h2>問題: この地図はどこですか？</h2>
             <ul>
-                <li><input type="radio" name="answer" value="1"> 大阪1</li>
-                <li><input type="radio" name="answer" value="2"> 大阪2</li>
-                <li><input type="radio" name="answer" value="3"> 大阪3</li>
-                <li><input type="radio" name="answer" value="4"> 大阪4</li>
+                <li><input type="radio" name="answer" value="1"><span id="ans1">大阪1</span></li>
+                <li><input type="radio" name="answer" value="2"><span id="ans2">大阪2</span></li>
+                <li><input type="radio" name="answer" value="3"><span id="ans3">大阪3</span></li>
+                <li><input type="radio" name="answer" value="4"><span id="ans4">大阪4</span></li>
             </ul>
 			<button id="submit-answer">解答</button>
+            <button id="next-question">次の問題</button>
         </div>
     </div>
     <script src="./script.js"></script>
