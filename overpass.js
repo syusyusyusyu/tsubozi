@@ -1,6 +1,6 @@
 class overpass {
 
-    getData(map) {
+    getData() {
         const OvServer = "https://maps.mail.ru/osm/tools/overpass/api/interpreter"
         const ovpass = 'nwr["leisure"="park"]'//;nwr["name"="	宮の上公園"];nwr["name"="いおり公園"]'
 
@@ -21,33 +21,11 @@ class overpass {
                         let ll = flat2single(element.geometry.coordinates, element.geometry.type)
                         let NM = element.properties.name;
                         json.push({ lat: ll[1], lng: ll[0], name: NM, id: element.properties.id })
-
-                        let NW = ll[0];
-                        let SE = ll[1];
-                        
-                        // アイコンの設定
-                        var icon = document.createElement('div');
-                        icon.innerHTML = "<img src='kumo.png' style='width: 192px'>";
-
-                        // ポップアップの設定
-                        let popup = new maplibregl.Popup({
-                            offset: 25, // ポップアップの位置
-                            closeButton: false, // 閉じるボタンの表示
-                            }).setText(NM);
-                            
-                            // マーカーの作成
-                            new maplibregl.Marker({ element: icon })
-                            .setLngLat([NW, SE])
-                            // .setPopup(popup)
-                            .addTo(map)
-                        });
-                        resolve(json);
-                })
-    
+                    });
+                    resolve(json);
+                })    
         });
-
     }
-
 }
 
 function flat2single(cords, type) {  // flat cordsの平均値(Poiの座標計算用)

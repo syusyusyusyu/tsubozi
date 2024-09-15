@@ -1,13 +1,15 @@
+/*
 document.getElementById('submit-answer').addEventListener('click', function() {
     var selectedAnswer = document.querySelector('input[name="answer"]:checked');
     if (selectedAnswer) {
-        var map = selectedAnswer.nextElementSibling.textContent;
+        let  = selectedAnswer.nextElementSibling.textContent;
         if(selectedAnswer.nextElementSibling.id === "ans1"){
             Swal.fire({
                 title: "正解！",
                 text: map + "です！",
                 icon: "success"
             });
+         qz.makers[selectedAnswer.value].remove();
         }
         else {
         Swal.fire({
@@ -17,11 +19,5 @@ document.getElementById('submit-answer').addEventListener('click', function() {
         });
     }
     }
-    else {
-        Swal.fire({
-            title: "エラー！",
-            text: "選択肢を選んでください！",
-            icon: "warning"
-        });
-    }
 });
+*/

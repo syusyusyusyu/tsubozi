@@ -11,7 +11,6 @@
     <script src="./quiz.js"></script>
     <script src="./main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="true.js"></script>
 </head>
 
 <body>
@@ -26,13 +25,11 @@
         <div class="quiz">
             <h2>問題: この地図はどこですか？</h2>
             <ul>
-                <li><input type="radio" name="answer" value="1"><span id="ans1"></span></li>
-                <li><input type="radio" name="answer" value="2"><span id="ans2"></span></li>
-                <li><input type="radio" name="answer" value="3"><span id="ans3"></span></li>
-                <li><input type="radio" name="answer" value="4"><span id="ans4"></span></li>
+                <li><button id="id1" onclick="qz.chkQuiz(1)"><span id="ans1"></span></button></li>
+                <li><button id="id2" onclick="qz.chkQuiz(2)"><span id="ans2"></span></button></li>
+                <li><button id="id3" onclick="qz.chkQuiz(3)"><span id="ans3"></span></button></li>
+                <li><button id="id4" onclick="qz.chkQuiz(4)"><span id="ans4"></span></button></li>
             </ul>
-			<button id="submit-answer">解答</button>
-            <button id="next-question">次の問題</button>
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             <script src="button.js"></script>
         </div>

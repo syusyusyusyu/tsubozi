@@ -51,28 +51,39 @@ body {
     margin: 5px 0;
 } */
 
-#overlay .quiz ul {
+ul {
     list-style: none;
     padding: 0;
 }
-#overlay .quiz li {
+li {
     margin: 10px 0;
+}
+button {
+    width: 100%;
     padding: 10px;
+    border: none;
     border-radius: 10px;
     font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    color: white;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-weight: bold; 
 }
-
-#overlay .quiz li:nth-child(1) {
+#id1 {
     background-color: gray; 
 }
-#overlay .quiz li:nth-child(2) {
+#id2 {
     background-color: blue; 
 }
-#overlay .quiz li:nth-child(3) {
+#id3 {
     background-color: green; 
 }
-#overlay .quiz li:nth-child(4) {
+#id4 {
     background-color: red; 
+}
+button:focus {
+    outline: none;
 }
 
 #submit-answer {
