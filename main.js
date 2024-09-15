@@ -10,7 +10,7 @@ window.onload = function () {
     map = new maplibregl.Map({
         container: 'map',
         style: 'https://k-sakanoshita.github.io/community_mapmaker/tiles/osmfj.json', // スタイル
-        center: [135.457188, 34.451391], // 座標
+        center: [135.535541, 34.748961], // 座標
         zoom: 15, // ズームレベル
         pitch: 30 // 傾き
     });
